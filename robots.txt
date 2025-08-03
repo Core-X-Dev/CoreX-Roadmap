@@ -1,8 +1,21 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# CoreX Framework Roadmap
+# A comprehensive roadmap for the CoreX Framework development
+# This file provides directives for search engine crawlers
+
+# Sitemap location
 Sitemap: https://roadmap.core-x.dev/sitemap.xml
 
-# CoreX Framework Roadmap
-# A comprehensive roadmap for the CoreX Framework development 
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Disallow specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Additional meta information
+# Last updated: 2024
+# Framework: CoreX
+# Type: Roadmap Website 

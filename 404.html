@@ -3,48 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - CoreX Framework Roadmap</title>
-    <meta name="theme-color" content="#111827">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    
-    <!-- SEO and Social Meta Tags -->
-    <meta name="description" content="Page not found - CoreX Framework Roadmap">
-    <meta name="keywords" content="FiveM, CoreX, Roadmap, Framework, Development, Features, Gaming, Server">
-    <meta name="author" content="CoreX">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Page Not Found - CoreX Framework Roadmap">
-    <meta property="og:description" content="The page you're looking for doesn't exist.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://roadmap.core-x.dev/404.html">
-    <meta property="og:image" content="https://roadmap.core-x.dev/assets/corex-logo.png">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Page Not Found - CoreX Framework Roadmap">
-    <meta name="twitter:description" content="The page you're looking for doesn't exist.">
-    <meta name="twitter:image" content="https://roadmap.core-x.dev/assets/corex-logo.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://roadmap.core-x.dev/404.html">
-    
-    <!-- Favicon -->
+    <title>CoreX | Page Not Found</title>
     <link rel="icon" type="image/png" href="assets/corex-icon.png">
-    
-    <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         .error-container {
             display: flex;
@@ -64,15 +27,8 @@
             line-height: 1;
         }
         
-        .error-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-        
         .error-message {
-            font-size: 1.125rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             max-width: 600px;
@@ -90,15 +46,18 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
             border-radius: var(--radius);
+            text-decoration: none;
             font-weight: 500;
             transition: all 0.2s ease;
         }
         
-        .btn:hover {
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
         }
@@ -111,7 +70,35 @@
         
         .btn-secondary:hover {
             background: var(--bg-tertiary);
-            border-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+        
+        .search-suggestions {
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+        
+        .search-suggestions h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .suggestion-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .suggestion-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: background-color 0.2s ease;
+        }
+        
+        .suggestion-links a:hover {
+            background: var(--bg-secondary);
         }
         
         @media (max-width: 768px) {
@@ -119,13 +106,19 @@
                 font-size: 6rem;
             }
             
-            .error-title {
-                font-size: 1.5rem;
+            .error-message {
+                font-size: 1.25rem;
             }
             
             .error-actions {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
     </style>
@@ -133,26 +126,90 @@
 <body>
     <div class="error-container">
         <div class="error-code">404</div>
-        <h1 class="error-title">Page Not Found</h1>
-        <p class="error-message">
-            The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
-        </p>
+        <div class="error-message">
+            Oops! The roadmap page you're looking for doesn't exist.
+        </div>
+        
         <div class="error-actions">
-            <a href="/" class="btn">
+            <a href="/" class="btn btn-primary">
                 <i class="fas fa-home"></i>
-                Go to Roadmap
+                Go Home
             </a>
-            <a href="https://docs.core-x.dev" class="btn btn-secondary">
-                <i class="fas fa-book"></i>
-                Documentation
-            </a>
-            <a href="https://github.com/Core-X-Dev/CoreX" class="btn btn-secondary">
-                <i class="fab fa-github"></i>
-                GitHub
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Go Back
             </a>
         </div>
+        
+        <div class="search-suggestions">
+            <h3>Looking for something specific?</h3>
+            <div class="suggestion-links">
+                <a href="/#current-status">
+                    <i class="fas fa-home"></i>
+                    Current Status
+                </a>
+                <a href="/#short-term">
+                    <i class="fas fa-rocket"></i>
+                    Short-Term Roadmap
+                </a>
+                <a href="/#medium-term">
+                    <i class="fas fa-calendar-alt"></i>
+                    Medium-Term Roadmap
+                </a>
+                <a href="/#success-metrics">
+                    <i class="fas fa-chart-line"></i>
+                    Success Metrics
+                </a>
+                <a href="/#priority-matrix">
+                    <i class="fas fa-list-ol"></i>
+                    Priority Matrix
+                </a>
+                <a href="/#contributing">
+                    <i class="fas fa-users"></i>
+                    Contributing Guide
+                </a>
+            </div>
+        </div>
     </div>
-
-    <script src="script.js"></script>
+    
+    <script>
+        // Add some interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add a search functionality
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'Search roadmap...';
+            searchInput.style.cssText = `
+                width: 100%;
+                max-width: 400px;
+                padding: 0.75rem 1rem;
+                border: 1px solid var(--border-color);
+                border-radius: var(--radius);
+                font-size: 1rem;
+                margin-top: 1rem;
+            `;
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    // Redirect to search or home page
+                    window.location.href = '/';
+                }
+            });
+            
+            const errorActions = document.querySelector('.error-actions');
+            errorActions.parentNode.insertBefore(searchInput, errorActions.nextSibling);
+            
+            // Add some animation
+            const errorCode = document.querySelector('.error-code');
+            errorCode.style.opacity = '0';
+            errorCode.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                errorCode.style.transition = 'all 0.6s ease';
+                errorCode.style.opacity = '1';
+                errorCode.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html> 

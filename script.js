@@ -1,8 +1,9 @@
-// CoreX Roadmap JavaScript
+// CoreX Documentation JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initNavigation();
+    initCopyButtons();
     initMobileMenu();
     initSmoothScrolling();
     initActiveSection();
@@ -104,57 +105,110 @@ function initNavigation() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // Smooth scroll to target
+                // Smooth scroll to section
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
                 
-                // Close mobile menu if open
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar && sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                }
+                // Update URL without page reload
+                history.pushState(null, null, '#' + targetId);
             }
         });
     });
 }
 
+// Copy button functionality
+function initCopyButtons() {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const codeBlock = this.closest('.code-block');
+            const codeElement = codeBlock.querySelector('code');
+            const textToCopy = codeElement.textContent;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show success feedback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i>';
+                this.style.color = '#10b981';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(textToCopy, this);
+            });
+        });
+    });
+}
+
+// Fallback copy function for older browsers
+function fallbackCopyTextToClipboard(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        button.style.color = '#10b981';
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.style.color = '';
+        }, 2000);
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
 // Mobile menu functionality
 function initMobileMenu() {
-    // Create mobile menu toggle button
+    // Add mobile menu toggle button
     const mobileToggle = document.createElement('button');
     mobileToggle.className = 'mobile-menu-toggle';
     mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    mobileToggle.setAttribute('aria-label', 'Toggle navigation menu');
     document.body.appendChild(mobileToggle);
     
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.querySelector('.sidebar');
     
     mobileToggle.addEventListener('click', function() {
         sidebar.classList.toggle('open');
-        
-        // Update icon
-        const icon = this.querySelector('i');
-        if (sidebar.classList.contains('open')) {
-            icon.className = 'fas fa-times';
-        } else {
-            icon.className = 'fas fa-bars';
-        }
     });
     
-    // Close menu when clicking outside
+    // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
         if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
             sidebar.classList.remove('open');
-            const icon = mobileToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
         }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+        });
     });
 }
 
 // Smooth scrolling for anchor links
 function initSmoothScrolling() {
+    // Handle anchor links in the page
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -175,35 +229,41 @@ function initActiveSection() {
     const navLinks = document.querySelectorAll('.nav-link');
     
     function updateActiveSection() {
-        const scrollPos = window.scrollY + 100;
+        const scrollPosition = window.scrollY + 100;
         
-        sections.forEach(section => {
+        sections.forEach((section, index) => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
             
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 // Remove active class from all nav links
                 navLinks.forEach(link => link.classList.remove('active'));
                 
                 // Add active class to corresponding nav link
-                const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+                const sectionId = section.getAttribute('id');
+                const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                if (correspondingLink) {
+                    correspondingLink.classList.add('active');
                 }
             }
         });
     }
     
     // Update on scroll
-    window.addEventListener('scroll', debounce(updateActiveSection, 100));
+    window.addEventListener('scroll', updateActiveSection);
     
     // Initial update
     updateActiveSection();
 }
 
-// Animations
+// Animation functionality
 function initAnimations() {
+    // Add animation delay to feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+        card.style.setProperty('--index', index);
+    });
+    
     // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
@@ -219,16 +279,123 @@ function initAnimations() {
         });
     }, observerOptions);
     
-    // Observe all sections and cards
-    document.querySelectorAll('.section, .feature-card, .timeline-item, .metric-card, .priority-card, .schedule-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+    // Observe all sections
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        observer.observe(section);
     });
 }
 
-// Utility function for debouncing
+// Utility functions
+function copyCode(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        const text = element.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            showNotification('Code copied to clipboard!', 'success');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            showNotification('Failed to copy code', 'error');
+        });
+    }
+}
+
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    // Style the notification
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+    `;
+    
+    // Set background color based on type
+    if (type === 'success') {
+        notification.style.backgroundColor = '#10b981';
+    } else if (type === 'error') {
+        notification.style.backgroundColor = '#ef4444';
+    } else {
+        notification.style.backgroundColor = '#3b82f6';
+    }
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    // Escape key closes mobile menu
+    if (e.key === 'Escape') {
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) {
+            sidebar.classList.remove('open');
+        }
+    }
+    
+    // Ctrl/Cmd + K for search (placeholder)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        showNotification('Search functionality coming soon!', 'info');
+    }
+    
+    // Ctrl/Cmd + T for theme toggle
+    if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+        e.preventDefault();
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.click();
+        }
+    }
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function() {
+    const hash = window.location.hash;
+    if (hash) {
+        const targetSection = document.querySelector(hash);
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-link[href="${hash}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+});
+
+// Performance optimization: Debounce scroll events
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -241,160 +408,37 @@ function debounce(func, wait) {
     };
 }
 
-// Show notification function (for future use)
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    // Style the notification
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.right = '20px';
-    notification.style.padding = '1rem 1.5rem';
-    notification.style.borderRadius = '8px';
-    notification.style.color = 'white';
-    notification.style.fontWeight = '500';
-    notification.style.zIndex = '1000';
-    notification.style.transform = 'translateX(100%)';
-    notification.style.transition = 'transform 0.3s ease';
-    
-    // Set background color based on type
-    switch (type) {
-        case 'success':
-            notification.style.backgroundColor = '#10b981';
-            break;
-        case 'error':
-            notification.style.backgroundColor = '#ef4444';
-            break;
-        case 'warning':
-            notification.style.backgroundColor = '#f59e0b';
-            break;
-        default:
-            notification.style.backgroundColor = '#6366f1';
-    }
-    
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 3000);
-}
+// Apply debouncing to scroll events
+const debouncedScrollHandler = debounce(() => {
+    // Any scroll-based functionality can be added here
+}, 10);
 
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    // Escape key closes mobile menu
-    if (e.key === 'Escape') {
-        const sidebar = document.getElementById('sidebar');
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        
-        if (sidebar && sidebar.classList.contains('open')) {
-            sidebar.classList.remove('open');
-            const icon = mobileToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
-        }
-    }
-    
-    // Ctrl/Cmd + K for theme toggle
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.click();
-    }
+window.addEventListener('scroll', debouncedScrollHandler);
+
+// Add loading state for better UX
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
 });
 
-// Performance optimization: Lazy load images
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Initialize lazy loading
-initLazyLoading();
-
-// Add loading states for interactive elements
-document.addEventListener('DOMContentLoaded', function() {
-    // Add loading states to buttons
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function() {
-            if (!this.classList.contains('loading')) {
-                this.classList.add('loading');
-                this.disabled = true;
-                
-                // Remove loading state after a short delay
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                    this.disabled = false;
-                }, 1000);
-            }
-        });
-    });
-});
-
-// Add focus indicators for accessibility
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Tab') {
-        document.body.classList.add('keyboard-navigation');
-    }
-});
-
-document.addEventListener('mousedown', function() {
-    document.body.classList.remove('keyboard-navigation');
-});
-
-// Add CSS for keyboard navigation
+// Add CSS for loading state
 const style = document.createElement('style');
 style.textContent = `
-    .keyboard-navigation *:focus {
-        outline: 2px solid var(--primary-color) !important;
-        outline-offset: 2px !important;
+    body:not(.loaded) {
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
     
-    .loading {
-        opacity: 0.7;
-        pointer-events: none;
+    body.loaded {
+        opacity: 1;
     }
     
-    .loading::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 16px;
-        height: 16px;
-        margin: -8px 0 0 -8px;
-        border: 2px solid transparent;
-        border-top: 2px solid currentColor;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+    .notification {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
     
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+    /* Theme transition */
+    * {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 `;
 document.head.appendChild(style); 
