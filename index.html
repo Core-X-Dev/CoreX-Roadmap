@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreX | Roadmap</title>
+    <meta name="theme-color" content="#111827">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- SEO and Social Meta Tags -->
+    <meta name="description" content="CoreX Framework Roadmap - Discover the future of FiveM development with our comprehensive roadmap featuring upcoming features, enhancements, and development plans.">
+    <meta name="keywords" content="FiveM, CoreX, Roadmap, Framework, Development, Features, Gaming, Server">
+    <meta name="author" content="CoreX">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="CoreX Framework Roadmap">
+    <meta property="og:description" content="Discover the future of FiveM development with our comprehensive roadmap featuring upcoming features and enhancements.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roadmap.core-x.dev/">
+    <meta property="og:image" content="https://roadmap.core-x.dev/assets/corex-logo.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CoreX Framework Roadmap">
+    <meta name="twitter:description" content="Discover the future of FiveM development with our comprehensive roadmap featuring upcoming features and enhancements.">
+    <meta name="twitter:image" content="https://roadmap.core-x.dev/assets/corex-logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://roadmap.core-x.dev/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/corex-icon.png">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/corex-logo.png" alt="CoreX Framework Logo" class="corex-logo" />
+                <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <ul class="nav-menu">
+                    <li><a href="#current-status" class="nav-link active"><i class="fas fa-home"></i> Current Status</a></li>
+                    <li><a href="#short-term" class="nav-link"><i class="fas fa-rocket"></i> Short-Term Roadmap</a></li>
+                    <li><a href="#medium-term" class="nav-link"><i class="fas fa-calendar-alt"></i> Medium-Term Roadmap</a></li>
+                    <li><a href="#success-metrics" class="nav-link"><i class="fas fa-chart-line"></i> Success Metrics</a></li>
+                    <li><a href="#priority-matrix" class="nav-link"><i class="fas fa-list-ol"></i> Priority Matrix</a></li>
+                    <li><a href="#contributing" class="nav-link"><i class="fas fa-users"></i> Contributing</a></li>
+                    <li><a href="#release-schedule" class="nav-link"><i class="fas fa-calendar"></i> Release Schedule</a></li>
+                    <li><a href="#vision" class="nav-link"><i class="fas fa-eye"></i> Vision Statement</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Current Status Section -->
+                <section id="current-status" class="section">
+                    <center><img src="assets/corex-logo.png" alt="CoreX Framework Logo" class="corex-logo" style="width: 700px"/></center>
+                    <h1>CoreX Framework Roadmap</h1>
+                    <p class="lead">Discover the future of FiveM development with our comprehensive roadmap featuring upcoming features, enhancements, and development plans.</p>
+                    
+                    <div class="version-badge">
+                        <span class="version-number">v1.0.2.0</span>
+                        <span class="version-status">Alpha</span>
+                    </div>
+
+                    <h2>Current Status</h2>
+                    <p>CoreX Framework is currently in <strong>Alpha</strong> development with a solid foundation and core features implemented.</p>
+
+                    <h3>✅ Completed Features</h3>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-cubes"></i>
+                            <h4>Core Framework Architecture</h4>
+                            <ul>
+                                <li>Modular system with dynamic module loading</li>
+                                <li>Player Object System with comprehensive data management</li>
+                                <li>MySQL Database integration with oxmysql</li>
+                                <li>Multi-language localization (EN, NO, SV, DA, DE)</li>
+                                <li>Role & Permission System with Discord integration</li>
+                                <li>Version checking and update system</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Core Modules</h4>
+                            <ul>
+                                <li>Multi-Character System with perma-death</li>
+                                <li>Job System with Discord role integration</li>
+                                <li>Inventory System with weight-based management</li>
+                                <li>Banking System with transaction logging</li>
+                                <li>Vehicle System with garage and ownership</li>
+                                <li>Admin Menu with comprehensive tools</li>
+                                <li>Spawn Manager for login/respawn logic</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fab fa-discord"></i>
+                            <h4>Discord Integration</h4>
+                            <ul>
+                                <li>Bi-directional chat sync</li>
+                                <li>Role-based permissions for jobs and server access</li>
+                                <li>Support ticket system with Discord threads</li>
+                                <li>Admin action logging with Discord embeds</li>
+                                <li>Server access control with multiple Discord roles</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Security & Performance</h4>
+                            <ul>
+                                <li>Comprehensive permission system</li>
+                                <li>Anti-cheat features and exploit prevention</li>
+                                <li>Database optimization with connection pooling</li>
+                                <li>Built-in benchmarking and performance monitoring</li>
+                                <li>Audit logging and error handling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Short-Term Roadmap Section -->
+                <section id="short-term" class="section">
+                    <h2>🚀 Short-Term Roadmap (Next 3-6 Months)</h2>
+                    
+                    <div class="roadmap-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>v1.1.0.0 - Enhanced UI & User Experience</h3>
+                                <span class="timeline-date">Target: Q1 2025</span>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <h4>🎨 UI/UX Improvements</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Modern Inventory UI</h5>
+                                        <ul>
+                                            <li>Drag-and-drop interface</li>
+                                            <li>Item preview and tooltips</li>
+                                            <li>Category filtering and search</li>
+                                            <li>Responsive design for all screen sizes</li>
+                                            <li>Dark/light theme toggle</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Enhanced Admin Panel</h5>
+                                        <ul>
+                                            <li>Web-based admin dashboard</li>
+                                            <li>Real-time player monitoring</li>
+                                            <li>Advanced teleportation tools</li>
+                                            <li>Player statistics and analytics</li>
+                                            <li>Server performance metrics</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Improved Job System UI</h5>
+                                        <ul>
+                                            <li>Job application interface</li>
+                                            <li>Job progression tracking</li>
+                                            <li>Salary and benefits display</li>
+                                            <li>Job-specific tools and interfaces</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>🔧 Technical Improvements</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Performance Optimization</h5>
+                                        <ul>
+                                            <li>Database query optimization</li>
+                                            <li>Memory usage improvements</li>
+                                            <li>Event system optimization</li>
+                                            <li>Caching system implementation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Developer Tools</h5>
+                                        <ul>
+                                            <li>Debug console and logging</li>
+                                            <li>Module development templates</li>
+                                            <li>API documentation generator</li>
+                                            <li>Testing framework</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>v1.2.0.0 - Advanced Features</h3>
+                                <span class="timeline-date">Target: Q2 2025</span>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <h4>🏠 Housing & Property System</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Property Management</h5>
+                                        <ul>
+                                            <li>House/apartment ownership</li>
+                                            <li>Property customization</li>
+                                            <li>Furniture system</li>
+                                            <li>Property market and real estate</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Advanced Vehicle System</h5>
+                                        <ul>
+                                            <li>Vehicle customization (paint, parts, tuning)</li>
+                                            <li>Vehicle insurance and registration</li>
+                                            <li>Impound and towing system</li>
+                                            <li>Vehicle rental system</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>💰 Economy Enhancements</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Advanced Banking</h5>
+                                        <ul>
+                                            <li>Multiple account types (savings, business)</li>
+                                            <li>Investment and stock system</li>
+                                            <li>Loan and credit system</li>
+                                            <li>ATM network expansion</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Business System</h5>
+                                        <ul>
+                                            <li>Player-owned businesses</li>
+                                            <li>Business management interface</li>
+                                            <li>Employee hiring and management</li>
+                                            <li>Business taxes and regulations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Medium-Term Roadmap Section -->
+                <section id="medium-term" class="section">
+                    <h2>🎯 Medium-Term Roadmap (6-12 Months)</h2>
+                    
+                    <div class="roadmap-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>v1.3.0.0 - Social & Community Features</h3>
+                                <span class="timeline-date">Target: Q3 2025</span>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <h4>👥 Gang & Faction System</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Gang Management</h5>
+                                        <ul>
+                                            <li>Gang creation and hierarchy</li>
+                                            <li>Territory control system</li>
+                                            <li>Gang wars and conflicts</li>
+                                            <li>Gang-specific jobs and activities</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Faction System</h5>
+                                        <ul>
+                                            <li>Government factions (Police, EMS, Fire)</li>
+                                            <li>Civilian factions (Business, Media, Legal)</li>
+                                            <li>Faction-specific permissions and tools</li>
+                                            <li>Inter-faction relationships</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>📱 Mobile Integration</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Mobile App Features</h5>
+                                        <ul>
+                                            <li>Banking app for transactions</li>
+                                            <li>Job management app</li>
+                                            <li>Property management app</li>
+                                            <li>Communication app</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>v1.4.0.0 - Advanced Systems</h3>
+                                <span class="timeline-date">Target: Q4 2025</span>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <h4>🎮 Enhanced Gameplay</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Advanced Job Progression</h5>
+                                        <ul>
+                                            <li>Skill-based progression system</li>
+                                            <li>Job-specific abilities and tools</li>
+                                            <li>Career paths and specializations</li>
+                                            <li>Job-related events and missions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <h5>Crafting & Economy</h5>
+                                        <ul>
+                                            <li>Advanced crafting system</li>
+                                            <li>Resource gathering and processing</li>
+                                            <li>Market and trading system</li>
+                                            <li>Supply chain management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>🔒 Security & Anti-Cheat</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>Advanced Security</h5>
+                                        <ul>
+                                            <li>Machine learning-based cheat detection</li>
+                                            <li>Behavioral analysis</li>
+                                            <li>Advanced permission hierarchies</li>
+                                            <li>Automated moderation tools</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>🎯 Advanced Features</h4>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <h5>AI Integration</h5>
+                                        <ul>
+                                            <li>AI-powered NPCs and interactions</li>
+                                            <li>Smart job assignment and management</li>
+                                            <li>Predictive analytics for server optimization</li>
+                                            <li>Natural language processing for commands</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Success Metrics Section -->
+                <section id="success-metrics" class="section">
+                    <h2>📊 Success Metrics</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h3>Technical Metrics</h3>
+                            <ul>
+                                <li><strong>Performance:</strong> &lt; 100ms average response time</li>
+                                <li><strong>Uptime:</strong> 99.9% server availability</li>
+                                <li><strong>Scalability:</strong> Support for 1000+ concurrent players</li>
+                                <li><strong>Security:</strong> Zero critical security vulnerabilities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <h3>Community Metrics</h3>
+                            <ul>
+                                <li><strong>Adoption:</strong> 100+ active servers using CoreX</li>
+                                <li><strong>Modules:</strong> 50+ community-contributed modules</li>
+                                <li><strong>Documentation:</strong> 100% API coverage with examples</li>
+                                <li><strong>Support:</strong> &lt; 24h average response time for issues</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Priority Matrix Section -->
+                <section id="priority-matrix" class="section">
+                    <h2>🎯 Priority Matrix</h2>
+                    
+                    <div class="priority-grid">
+                        <div class="priority-card high">
+                            <h3>High Priority (Immediate)</h3>
+                            <ul>
+                                <li>Enhanced UI/UX improvements</li>
+                                <li>Performance optimization</li>
+                                <li>Security enhancements</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="priority-card medium">
+                            <h3>Medium Priority (3-6 months)</h3>
+                            <ul>
+                                <li>Housing and property system</li>
+                                <li>Advanced vehicle customization</li>
+                                <li>Mobile app integration</li>
+                                <li>Gang and faction system</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="priority-card low">
+                            <h3>Low Priority (6+ months)</h3>
+                            <ul>
+                                <li>AI integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contributing Section -->
+                <section id="contributing" class="section">
+                    <h2>🤝 Contributing to the Roadmap</h2>
+                    <p>We welcome community input on our roadmap! Here's how you can contribute:</p>
+                    
+                    <h3>Feedback & Suggestions</h3>
+                    <ul>
+                        <li><strong>GitHub Issues:</strong> Submit feature requests and bug reports</li>
+                        <li><strong>Discord Community:</strong> Join discussions about upcoming features</li>
+                        <li><strong>Pull Requests:</strong> Contribute code and improvements</li>
+                        <li><strong>Documentation:</strong> Help improve our documentation</li>
+                    </ul>
+                    
+                    <h3>Development Guidelines</h3>
+                    <ul>
+                        <li>Follow our coding standards and contribution guidelines</li>
+                        <li>Test thoroughly before submitting changes</li>
+                        <li>Provide comprehensive documentation for new features</li>
+                        <li>Consider backward compatibility when possible</li>
+                    </ul>
+                </section>
+
+                <!-- Release Schedule Section -->
+                <section id="release-schedule" class="section">
+                    <h2>📅 Release Schedule</h2>
+                    
+                    <div class="schedule-grid">
+                        <div class="schedule-card">
+                            <h3>Quarterly Releases</h3>
+                            <ul>
+                                <li><strong>Q1 2026:</strong> v1.1.0.0 - Enhanced UI & UX</li>
+                                <li><strong>Q2 2026:</strong> v1.2.0.0 - Advanced Features</li>
+                                <li><strong>Q3 2026:</strong> v1.3.0.0 - Social & Community</li>
+                                <li><strong>Q4 2026:</strong> v1.4.0.0 - Advanced Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vision Statement Section -->
+                <section id="vision" class="section">
+                    <h2>🎉 Vision Statement</h2>
+                    <p>CoreX Framework aims to be the most advanced, secure, and user-friendly FiveM framework available. We're building not just a framework, but a complete ecosystem that empowers developers and server owners to create amazing roleplay experiences.</p>
+                    
+                    <p>Our commitment is to:</p>
+                    <ul>
+                        <li><strong>Innovate:</strong> Continuously push the boundaries of what's possible</li>
+                        <li><strong>Secure:</strong> Provide enterprise-grade security and reliability</li>
+                        <li><strong>Community:</strong> Build a thriving ecosystem of developers and users</li>
+                        <li><strong>Performance:</strong> Deliver the best possible performance and scalability</li>
+                        <li><strong>Usability:</strong> Make development and server management as easy as possible</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

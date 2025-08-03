@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://roadmap.core-x.dev/sitemap.xml
+
+# CoreX Framework Roadmap
+# A comprehensive roadmap for the CoreX Framework development 
